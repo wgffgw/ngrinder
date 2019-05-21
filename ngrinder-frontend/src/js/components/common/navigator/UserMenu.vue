@@ -18,6 +18,11 @@
             <template v-if="isAdmin">
                 <li v-if="config.clustered" class="dropdown-submenu">
                     <a class="clickable" v-text="i18n('navigator.dropDown.downloadAgent')"></a>
+                    <ul class="dropdown-menu">
+                        <li v-for="region in config.visibleRegions">
+                            <a :href="`/agent/download?region=${region}`" v-text="region"></a>
+                        </li>
+                    </ul>
                 </li>
                 <li v-else>
                     <a href="/agent/download" v-text="i18n('navigator.dropDown.downloadAgent')"></a>
